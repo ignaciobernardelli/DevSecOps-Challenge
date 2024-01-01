@@ -1,4 +1,3 @@
-/* output "function_url" {
-  description = "URL de la función de Cloud Functions"
-  value       = module.functions.function_url
-} */
+output "function_url" {
+  value = google_cloudfunctions_function.kafka_producer.https_trigger_url
+}

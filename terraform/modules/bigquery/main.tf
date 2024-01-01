@@ -1,17 +1,6 @@
-resource "google_bigquery_dataset" "my_dataset" {
-  dataset_id = "my_dataset"
-  project    = var.project_id
-}
-
-resource "google_bigquery_table" "my_table" {
-  dataset_id = google_bigquery_dataset.my_dataset.dataset_id
-  table_id   = "my_table"
-
-  schema = <<-JSON
-    [
-      {"name": "column1", "type": "STRING"},
-      {"name": "column2", "type": "STRING"},
-      # ... otros campos según sea necesario
-    ]
-  JSON
+resource "google_bigquery_dataset" "dataset" {
+  dataset_id                  = var.dataset_id
+  project                    = var.project_id
+  location                   = "US"  # Cambia a tu región preferida
+  default_table_expiration_ms = 3600000  # 1 hora (ajusta según tus necesidades)
 }

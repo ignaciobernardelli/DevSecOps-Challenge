@@ -9,3 +9,8 @@ variable "region" {
   type = string
   default = "us-east1" 
 }
+
+variable "dataset_id" {
+  description = "BigQuery Dataset ID"
+  default = "ingesta-test"
+}
