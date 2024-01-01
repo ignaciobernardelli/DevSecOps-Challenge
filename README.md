@@ -1,5 +1,5 @@
 # DevSecOps-Challenge
-En primer lugar pido disculpas y quiero ser sincero comentando que no le he podido dedicar el tiempo necesario para completar el challenge, ha sido una semana particularmente complicada por temas personales y se me ha complicado muchisimo encontrar un momento donde enfocarme, creo que no he podido dedicarle mas de 10 hs reales. 
+En primer lugar pido disculpas y quiero ser sincero comentando que no le he podido dedicar el tiempo necesario para completar el challenge, ha sido una semana particularmente complicada por temas personales y se me ha complicado muchisimo encontrar un momento donde enfocarme, creo que no he podido dedicarle mas de 8 hs reales. 
 Por otro lado mi falta de conocimiento y experiencia en varios aspectos complicaron la solucion.
 Mas alla de estos impedimentos estoy totalmente agradecido por la oportunidad y quise por lo menos compartir el poco avance de lo que he podido realizar.
 Nuevamente pido disculpas.
@@ -54,36 +54,29 @@ En este caso se ha pensado en buscar una solucion simple y ligera simulando la i
    d. Todo esto se despliega mediante Terraform como IaC.
    Se agregaron archivos con modulos para cada uno de los recursos.
 
-Parte 2: Aplicaciones y flujo CI/CD
-1. API HTTP: Levantar un endpoint HTTP con lógica que lea datos de base de datos y
-los exponga al recibir una petición GET
+### Parte 2: Aplicaciones y flujo CI/CD
+#### 1. API HTTP: Levantar un endpoint HTTP con lógica que lea datos de base de datos y los exponga al recibir una petición GET
 
 Probaria utilizar Cloud Endpoints para crear y gestionar el endpoint API HTTP. 
 
-2. Deployar API HTTP en la nube mediante CI/CD a tu elección. Flujo CI/CD y
-ejecuciones deben estar visibles en el repositorio git.
+#### 2. Deployar API HTTP en la nube mediante CI/CD a tu elección. Flujo CI/CD y ejecuciones deben estar visibles en el repositorio git.
 
 Configuraria un flujo de Integración Continua / Despliegue Continuo (CI/CD) utilizando Cloud Build. Cada vez que se realice un cambio en el repositorio Git, Cloud Build automáticamente compilará y desplegará la nueva versión de la API en GCP.
 
-3. (Opcional) Ingesta: Agregar suscripción al sistema Pub/Sub con lógica para ingresar
-los datos recibidos a la base de datos. El objetivo es que los mensajes recibidos en
-un tópico se guarden en la base de datos. No requiere CI/CD.
+#### 3. (Opcional) Ingesta: Agregar suscripción al sistema Pub/Sub con lógica para ingresar los datos recibidos a la base de datos. El objetivo es que los mensajes recibidos en un tópico se guarden en la base de datos. No requiere CI/CD.
 
-4. Incluye un diagrama de arquitectura con la infraestructura del punto 1.1 y su
-interacción con los servicios/aplicaciones que demuestra el proceso end-to-end de
+#### 4. Incluye un diagrama de arquitectura con la infraestructura del punto 1.1 y su interacción con los servicios/aplicaciones que demuestra el proceso end-to-end de
 ingesta hasta el consumo por la API HTTP
 
 Diagrama generado con IA (debido al poco tiempo sino lo haria con herramientas como draw.io o lucidchart)
 ![diagram-ia](image.png)
 
-Parte 3: Pruebas de Integración y Puntos Críticos de Calidad
-1. Implementa en el flujo CI/CD en test de integración que verifique que la API
-efectivamente está exponiendo los datos de la base de datos. Argumenta.
+### Parte 3: Pruebas de Integración y Puntos Críticos de Calidad
+#### 1. Implementa en el flujo CI/CD en test de integración que verifique que la API efectivamente está exponiendo los datos de la base de datos. Argumenta.
 
 En el proceso de implementación de pruebas de integración en nuestro flujo de CI/CD, adoptaremos una estrategia fundamental para verificar la efectiva exposición de datos de la base de datos a través de nuestra API en Google Cloud Platform (GCP). Para llevar a cabo esta tarea, aprovecharemos herramientas esenciales, como Cloud Build, que automatizará no solo nuestras pruebas sino también los despliegues. Además, enfocaremos nuestras pruebas de integración específicamente en Cloud Functions, garantizando la validación exhaustiva de la funcionalidad de la API. Los pasos subsiguientes implican el desarrollo de pruebas en un entorno controlado que emule las solicitudes reales a nuestra API y la configuración de Cloud Build para ejecutar estas pruebas de manera automática con cada implementación. En última instancia, subrayaremos la eficacia de estas pruebas al resaltar cómo aseguran de manera sólida el correcto funcionamiento de la API al interactuar con los datos almacenados en la base de datos.
 
-2. Proponer otras pruebas de integración que validen que el sistema está funcionando
-correctamente y cómo se implementarían.
+#### 2. Proponer otras pruebas de integración que validen que el sistema está funcionando correctamente y cómo se implementarían.
 
 Queremos asegurar el funcionamiento óptimo del sistema, por eso se necesitan pruebas adicionales de integración más allá de las mencionadas anteriormente. Estas pruebas se podrian centran en dos aspectos cruciales: rendimiento y seguridad.
 
@@ -91,7 +84,7 @@ Para evaluar el rendimiento del sistema, nos apoyaremos en Cloud Monitoring, una
 
 En cuanto a seguridad de acuerdo a informacion encontrada se puede utilizar Cloud Security Scanner para llevar a cabo búsquedas exhaustivas de posibles vulnerabilidades en el sistema. Además, desplegar pruebas de seguridad en las capas de la API y la base de datos, asegurando así la proteccion de datos sensibles. Estas medidas combinadas fortalecerán la integridad y la resistencia del sistema ante desafíos tanto de rendimiento como de seguridad.
 
-3. Identificar posibles puntos críticos del sistema (a nivel de fallo o performance) diferentes al punto anterior y proponer formas de testearlos o medirlos (no implementar)
+#### 3. Identificar posibles puntos críticos del sistema (a nivel de fallo o performance) diferentes al punto anterior y proponer formas de testearlos o medirlos (no implementar)
 
 Al intentar identificar puntos críticos del sistema, podemos abordar posibles áreas de vulnerabilidad, tanto en términos de fallo como de rendimiento.
 
@@ -101,7 +94,7 @@ Otro punto crítico que se podria abordar es el tiempo de respuesta del sistema.
 
 Este enfoque integral en identificar y mitigar puntos críticos fortalece la fiabilidad y rendimiento del sistema en diversos escenarios.
 
-4. Proponer cómo robustecer técnicamente el sistema para compensar o solucionar dichos puntos críticos
+#### 4. Proponer cómo robustecer técnicamente el sistema para compensar o solucionar dichos puntos críticos
 
 En base a documentacion encontrda en Google para mejorar la robustez del sistema y manejar sus puntos críticos, se podria realizar lo siguiente:
 
@@ -113,8 +106,8 @@ Monitoreo Continuo con Cloud Monitoring: Configurar alertas para recibir notific
 
 Estas propuestas combinadas fortalecerán la calidad y la resistencia del sistema, asegurando un rendimiento óptimo incluso en condiciones desafiantes y proporcionando una experiencia de usuario excepcional.
 
-Parte 4: Métricas y Monitoreo
-1. Proponer 3 métricas (además de las básicas CPU/RAM/DISK USAGE) críticas para entender la salud y rendimiento del sistema end-to-end
+### Parte 4: Métricas y Monitoreo
+#### 1. Proponer 3 métricas (además de las básicas CPU/RAM/DISK USAGE) críticas para entender la salud y rendimiento del sistema end-to-end
 
 Además de las métricas básicas podriamos enfocarnos en:
 
@@ -122,28 +115,27 @@ Latencia del Sistema: Mide el tiempo que tarda el sistema en responder a una sol
 Tasa de Errores: Evalúa la frecuencia de errores en las operaciones, permitiendo identificar posibles problemas en la lógica de la aplicación.
 Recuento de Solicitudes por Segundo: Proporciona una visión general de la carga del sistema y ayuda a anticipar picos de demanda.
 
-2. Proponer una herramienta de visualización y describe textualmente qué métricas mostraría, y cómo esta información nos permitiría entender la salud del sistema para
+#### 2. Proponer una herramienta de visualización y describe textualmente qué métricas mostraría, y cómo esta información nos permitiría entender la salud del sistema para
 tomar decisiones estratégicas
 
 Se podria utilizar Grafana. La herramienta mostraría gráficos interactivos de tendencias temporales para cada métrica crítica. Por ejemplo, un panel dedicado a la latencia del sistema permitiría identificar patrones de rendimiento y nos brindaría una visión clara de la salud del sistema para facilitar la toma de decisiones estratégicas.
 
-3. Describe a grandes rasgos cómo sería la implementación de esta herramienta en la nube y cómo esta recolectaría las métricas del sistema
+#### 3. Describe a grandes rasgos cómo sería la implementación de esta herramienta en la nube y cómo esta recolectaría las métricas del sistema
 
 La implementación se realizaría utilizando servicios como Prometheus para la recopilación de métricas y Grafana para la visualización. Estos servicios se desplegarían como contenedores en un clúster gestionado, como GKE. Prometheus se configuraría para recopilar métricas de cada instancia del sistema, y Grafana se integraría para proporcionar paneles de control intuitivos y personalizables.
 
-4. Describe cómo cambiará la visualización si escalamos la solución a 50 sistemas similares y qué otras métricas o formas de visualización nos permite desbloquear
+#### 4. Describe cómo cambiará la visualización si escalamos la solución a 50 sistemas similares y qué otras métricas o formas de visualización nos permite desbloquear
 este escalamiento.
 
 Al escalar a 50 sistemas similares, la visualización deberá adaptarse. Se agregarían paneles específicos para mostrar métricas agregadas y comparativas entre instancias. Además, se podrían incluir métricas adicionales como la distribución de carga entre los sistemas para entender mejor el rendimiento colectivo.
 
-5. Comenta qué dificultades o limitaciones podrían surgir a nivel de observabilidad de los sistemas de no abordarse correctamente el problema de escalabilidad
+#### 5. Comenta qué dificultades o limitaciones podrían surgir a nivel de observabilidad de los sistemas de no abordarse correctamente el problema de escalabilidad
 
 Sin abordar adecuadamente la escalabilidad, podríamos enfrentar desafíos en la recopilación y visualización eficiente de datos. Las herramientas de monitoreo podrían experimentar latencia al tratar de manejar la carga generada por múltiples sistemas, lo que dificultaría una observabilidad efectiva. Además, la falta de escalabilidad podría limitar la capacidad para identificar patrones de rendimiento en entornos altamente dinámicos. Es crucial abordar estas limitaciones para garantizar una observabilidad efectiva a medida que la infraestructura crece.
 
-Parte 5: Alertas y SRE (Opcional)
+### Parte 5: Alertas y SRE (Opcional)
 
-1. Define específicamente qué reglas o umbrales utilizarías para las métricas propuestas, de manera que se disparan alertas al equipo al decaer la performance
-del sistema. Argumenta.
+#### 1. Define específicamente qué reglas o umbrales utilizarías para las métricas propuestas, de manera que se disparan alertas al equipo al decaer la performance del sistema. Argumenta.
 
 Reglas y Umbrales para Alertas de Performance:
 Para las métricas propuestas:
@@ -154,7 +146,7 @@ Recuento de Solicitudes por Segundo: Establecer alertas en caso de picos inesper
 
 Estos umbrales se basan en un equilibrio entre mantener un rendimiento óptimo y detectar problemas antes de que afecten la experiencia del usuario. Alertar al equipo cuando se exceden estos umbrales permite una respuesta proactiva, mitigando posibles impactos negativos en la calidad del servicio.
 
-2. SLIs y SLOs para Servicios del Sistema:
+#### 2. SLIs y SLOs para Servicios del Sistema:
 
 SLI (Service Level Indicator): Utilizaríamos la latencia del sistema como SLI, ya que directamente afecta la experiencia del usuario.
 SLO (Service Level Objective): Estableceríamos un objetivo de latencia del 95% de las solicitudes completadas en un tiempo determinado.
